@@ -44,3 +44,13 @@ npm run dev
 3. Enter the question you want to ask
 4. Click on "Generate query"
 5. Copy the generated query by clicking on the "Copy" button
+
+### Pending features (that I will add in the future)
+
+- [ ] Add tests
+- [ ] Add responsiveness
+- [ ] Add a "Copy" button for the schema
+- [ ] Interface to add your own OpenAI API key
+- [ ] Add support for other databases (currently only supports SQL)
+- [ ] Connect to schema databases to get the schema automatically (example: connect to a GitHub repository to get the schema from a SQL file, connect to Prisma, etc)
+- [ ] Deploy to Vercel
