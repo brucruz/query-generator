@@ -52,7 +52,7 @@ export function SchemaSidebar(): JSX.Element {
   return (
     <aside className="flex-none border-solid border-r px-12 py-24 h-full bg-gray-800 border-gray-700 max-w-lg overflow-y-auto">
       <h2 className="text-left text-lg font-semibold text-slate-100">
-        How it works?
+        How does it work?
       </h2>
 
       <ol className="py-8">
