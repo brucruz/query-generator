@@ -1,5 +1,3 @@
-"use client"; // This is a client component 👈🏽
-
 import Chat from "@/components/Chat";
 import SchemaSidebar from "@/components/SchemaSidebar";
 

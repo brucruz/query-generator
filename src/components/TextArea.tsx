@@ -6,6 +6,7 @@ interface TextAreaProps
   label?: string;
   rows?: number;
   resizable?: boolean;
+  error?: string;
 }
 
 export function TextArea({
@@ -15,6 +16,7 @@ export function TextArea({
   label,
   rows = 2,
   resizable = false,
+  error,
   ...rest
 }: TextAreaProps): JSX.Element {
   return (
@@ -36,6 +38,11 @@ export function TextArea({
           value={value}
           {...rest}
         ></textarea>
+        {error && (
+          <div className="bg-red-500 text-sm text-white text-center py-2">
+            {error}
+          </div>
+        )}
       </div>
     </div>
   );

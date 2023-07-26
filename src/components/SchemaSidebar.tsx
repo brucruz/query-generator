@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+"use client"; // This is a client component 👈🏽
+
+import { useState } from "react";
 import Button from "./Button";
 import TextArea from "./TextArea";
+import { useSchema } from "@/hooks/useSchema";
 
 const example = `CREATE TABLE Orders (
   OrderID int,
@@ -37,27 +40,13 @@ CREATE TABLE Customers (
 );`;
 
 export function SchemaSidebar(): JSX.Element {
-  const [schema, setSchema] = useState<string | null>(null);
   const [value, setValue] = useState("");
-
-  useEffect(() => {
-    const storedSchema = localStorage.getItem("schema");
-
-    if (storedSchema) {
-      setSchema(storedSchema);
-    }
-  }, []);
+  const { schema, saveSchema } = useSchema();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     saveSchema(value);
-  };
-
-  const saveSchema = (input: string) => {
-    setSchema(input);
-    // save schema to local storage
-    localStorage.setItem("schema", input);
   };
 
   return (

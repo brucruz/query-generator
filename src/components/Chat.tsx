@@ -1,10 +1,13 @@
+"use client"; // This is a client component 👈🏽
 import { useChat } from "ai/react";
 import TextArea from "./TextArea";
 import Button from "./Button";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useSchema } from "@/hooks/useSchema";
+import { ChatRequestOptions } from "ai";
 
 export function Chat(): JSX.Element {
-  const storedSchema = localStorage.getItem("schema");
+  const { schema } = useSchema();
 
   const {
     messages,
@@ -14,10 +17,10 @@ export function Chat(): JSX.Element {
     setMessages,
     error,
   } = useChat({
-    body: { schema: storedSchema } || undefined,
+    body: { schema } || undefined,
   });
 
-  const [schemaError, setSchemaError] = useState<string | null>(null);
+  const [schemaError, setSchemaError] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (error) {
@@ -26,19 +29,22 @@ export function Chat(): JSX.Element {
     }
   }, [error, setMessages]);
 
-  useEffect(() => {
-    if (!storedSchema) {
-      setSchemaError('Please enter a schema in the "Schema" tab.');
+  function handleClickGenerate(
+    e: FormEvent<HTMLFormElement>,
+    chatRequestOptions?: ChatRequestOptions | undefined
+  ): void {
+    e.preventDefault();
+
+    if (!schema) {
+      setSchemaError("Please enter a schema in the Schema tab.");
+      return;
     }
-  }, [storedSchema]);
+    setSchemaError(undefined);
+    handleSubmit(e, chatRequestOptions);
+  }
 
   return (
     <>
-      {schemaError && (
-        <div className="bg-red-500 text-white text-center py-2">
-          {schemaError}
-        </div>
-      )}
       <div className="py-8 text-left max-w-2xl w-full h-full overflow-y-auto">
         {messages.map((message) => (
           <div
@@ -61,14 +67,15 @@ export function Chat(): JSX.Element {
         ))}
       </div>
 
-      <form className="max-w-2xl w-full" onSubmit={handleSubmit}>
+      <form className="max-w-2xl w-full" onSubmit={handleClickGenerate}>
         <TextArea
           id="user-input"
           value={input}
           placeholder="What do you want to query?"
           onChange={handleInputChange}
+          error={schemaError}
         />
-        <Button type="submit" text="Generate names" />
+        <Button type="submit" text="Generate query" />
 
         <span
           className="block text-sm underline underline-offset-4 w-fit mx-auto text-center pt-4 cursor-pointer"
