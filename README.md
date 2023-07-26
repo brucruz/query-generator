@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SQL Queries Generator
 
-## Getting Started
+## Generate SQL queries with AI
 
-First, run the development server:
+### Introduction
+
+I decided to create this project because I wanted to have an AI app that I would use personally and that would benefit others as well. I am a software engineer and I work with SQL queries on a daily basis. I thought it would be great to have an AI app that would generate SQL queries for me, which would save me a great deal of time, as I could use it to generate queries for my professional and personal projects.
+
+I expect that product managers and business analysts will also find this app particularly useful, as they usually have a basic SQL knowledge but sometimes are confronted with complex needs.
+
+But it is not exclusive to them, anyone who needs to generate SQL queries can use it.
+
+### How to run the app locally
+
+1. Clone this repository
+
+```bash
+git clone TODO: add link
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Add `OPENAI_API_KEY` to your environment variables
+
+```bash
+# .env.local
+OPENAI_API_KEY=YOUR_OPEN_AI_API_KEY
+```
+
+4. Run the app
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### How to use it
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Go to localhost:3000
+2. Enter the schema for which you want to generate SQL queries
+3. Enter the question you want to ask
+4. Click on "Generate query"
+5. Copy the generated query by clicking on the "Copy" button
