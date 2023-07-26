@@ -5,6 +5,7 @@ import Button from "./Button";
 import { FormEvent, useEffect, useState } from "react";
 import { useSchema } from "@/hooks/useSchema";
 import { ChatRequestOptions } from "ai";
+import { Message } from "./Message";
 
 export function Chat(): JSX.Element {
   const { schema } = useSchema();
@@ -47,23 +48,7 @@ export function Chat(): JSX.Element {
     <>
       <div className="py-8 text-left max-w-2xl w-full h-full overflow-y-auto">
         {messages.map((message) => (
-          <div
-            className={`flex gap-4 p-4 text-sm leading-7 ${
-              message.role === "user" ? "bg-gray-800" : "bg-gray-700"
-            }`}
-            key={message.id}
-          >
-            <div className="w-1/4 font-semibold">
-              <p className="text-slate-100">
-                {message.role === "user" ? "You:" : "AI:"}
-              </p>
-            </div>
-            <div className="w-3/4">
-              <p className="text-slate-100 whitespace-break-spaces">
-                {message.content}
-              </p>
-            </div>
-          </div>
+          <Message key={message.id} message={message} />
         ))}
       </div>
 
