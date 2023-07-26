@@ -90,6 +90,7 @@ export function SchemaSidebar(): JSX.Element {
           rows={12}
           placeholder="What is your database schema?"
           onChange={(e) => setValue(e.target.value)}
+          resizable
         />
         <Button type="submit" text="Save schema" />
 

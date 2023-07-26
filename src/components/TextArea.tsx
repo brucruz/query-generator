@@ -5,6 +5,7 @@ interface TextAreaProps
   placeholder?: string;
   label?: string;
   rows?: number;
+  resizable?: boolean;
 }
 
 export function TextArea({
@@ -12,7 +13,8 @@ export function TextArea({
   value,
   placeholder,
   label,
-  rows = 4,
+  rows = 2,
+  resizable = false,
   ...rest
 }: TextAreaProps): JSX.Element {
   return (
@@ -26,7 +28,9 @@ export function TextArea({
       <div className="overflow-hidden">
         <textarea
           id={id}
-          className="p-2 text-slate-900 w-full resize-none border-x-0 border-t-0 border-gray-200 align-top sm:text-sm"
+          className={`p-2 text-slate-900 w-full resize-none border-x-0 border-t-0 border-gray-200 align-top sm:text-sm ${
+            resizable ? "resize-y" : "resize-none"
+          }`}
           rows={rows}
           placeholder={placeholder}
           value={value}
